@@ -1,0 +1,71 @@
+.node {
+  background: rgb(255, 255, 255);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  min-width: 180px;
+  height: auto;
+  padding-bottom: 6px;
+  box-sizing: content-box;
+  position: relative;
+  user-select: none;
+  max-width: 220px;
+}
+
+.node:hover {
+  border: none;
+  background: rgb(255, 255, 255);
+}
+
+.selected {
+  border: none;
+  background-color: rgb(255, 255, 255) !important;
+}
+.node .title {
+  color: rgb(255 255 255);
+  font-size: 19px;
+  background-color: #0092ff;
+  border-radius: 2px 2px 0px 0px;
+  padding: 6px 19px;
+  font-weight: 500;
+}
+.node .control {
+  padding: 20px 18px;
+}
+.node .input {
+  text-align: left;
+}
+.socket {
+  display: inline-block;
+  cursor: pointer;
+  border: 3px solid white;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  margin: 6px;
+  vertical-align: middle;
+  background: #ffb091;
+  z-index: 2;
+  box-sizing: border-box;
+}
+.node .input-title,
+.node .output-title {
+  vertical-align: middle;
+  color: rgb(70 78 84);
+  display: inline-block;
+  font-family: 'Ubuntu Mono', sans-serif;
+  font-size: 14px;
+  margin: 4px;
+  line-height: 24px;
+}
+
+.node .output {
+  text-align: right;
+}
+.socket .output {
+  margin-right: -12px;
+}
+
+.connection .main-path {
+  stroke: #f07748;
+}

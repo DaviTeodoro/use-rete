@@ -1,6 +1,6 @@
 import * as Rete from 'rete';
 
-// import { MyNode } from '../nodes/MyNode';
+import { CustomNode } from '../customNode';
 
 export interface Input {
   direction: 'in';
@@ -29,7 +29,8 @@ export class ReteComponent extends Rete.Component {
     inputs: Input[],
     outputs: Output[],
     onWork: Function,
-    component: Function
+    component: Function,
+    path: string[]
   ) {
     super(title);
 
@@ -37,9 +38,10 @@ export class ReteComponent extends Rete.Component {
     this.outputs = outputs;
     this.onWork = onWork;
 
-    // this.data.component = MyNode;
+    // @ts-ignore
+    this.data.component = CustomNode;
     this.component = component;
-    this.path = ['Measure'];
+    this.path = path;
     this.description =
       'Takes a set of features, calculates the bbox of all input features, and returns a bounding box.';
   }
@@ -48,17 +50,17 @@ export class ReteComponent extends Rete.Component {
     if (!this.editor) return;
     const ctrl = new Control(this.editor, 'control', node, this.component);
 
+    this.inputs.forEach(({ id, socket, title }) => {
+      const inp = new Rete.Input(id, title, socket);
+
+      node.addInput(inp);
+    });
+
     this.outputs.forEach(({ id, socket, title }) => {
       //   const { id, socket, title } = element;
       const out = new Rete.Output(id, title, socket);
 
       node.addOutput(out);
-    });
-
-    this.inputs.forEach(({ id, socket, title }) => {
-      const inp = new Rete.Input(id, title, socket);
-
-      node.addInput(inp);
     });
 
     return node.addControl(ctrl);

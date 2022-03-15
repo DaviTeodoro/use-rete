@@ -13,7 +13,7 @@ interface StateContext {
   engine: any;
   editorViewport: any;
   components: any;
-  reteComponents: any;
+
   nodes: any;
   editorRef: any;
 }
@@ -24,7 +24,6 @@ const INITIAL_STATE: StateContext = {
   editorViewport: {},
   components: [],
   nodes: Map(),
-  reteComponents: [],
   editorRef: null,
 };
 
@@ -47,10 +46,7 @@ function reducer(
       return { ...state, editorViewport: payload };
     }
     case 'SET_COMPONENTS': {
-      return { ...state, components: payload };
-    }
-    case 'ADD_RETE_COMPONENT': {
-      return { ...state, reteComponents: [...state.reteComponents, payload] };
+      return { ...state, components: [...state.components, ...payload] };
     }
     case 'SET_NODE': {
       return {
@@ -81,19 +77,18 @@ function ReteProvider({ children }: any) {
     (node) => {
       if (node !== null) {
         async function asyncCreateEditor() {
-          const [editor, engine, components] = await createEditor(
+          const [editor, engine] = await createEditor(
             node,
-            state.reteComponents,
+            state.components,
             dispatch
           );
           dispatch(['SET_EDITOR', editor]);
           dispatch(['SET_ENGINE', engine]);
-          dispatch(['SET_COMPONENTS', components]);
         }
         asyncCreateEditor();
       }
     },
-    [state.reteComponents]
+    [state.components]
   );
 
   return (

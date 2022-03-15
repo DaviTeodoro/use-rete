@@ -58,5 +58,5 @@ export default async function createEditor(
     await dispatch(['REMOVE_NODE', node]);
   });
 
-  return [editor, engine, components];
+  return [editor, engine];
 }

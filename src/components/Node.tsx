@@ -3,14 +3,16 @@ import React, { useEffect } from 'react';
 
 import { useRete } from '../provider/';
 
-export default function ReactRete({
+export default function Node({
   children,
   onWork,
   name,
+  path,
 }: {
   children: any[];
   onWork: Function;
   name: string;
+  path: string[];
 }) {
   const [_, dispatch] = useRete();
 
@@ -26,8 +28,8 @@ export default function ReactRete({
 
   useEffect(() => {
     dispatch([
-      'ADD_RETE_COMPONENT',
-      new ReteComponent(name, inputs, outputs, onWork, component),
+      'SET_COMPONENTS',
+      [new ReteComponent(name, inputs, outputs, onWork, component, path)],
     ]);
   }, []);
 
