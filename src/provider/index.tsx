@@ -1,4 +1,9 @@
-import { useContext, createContext, useReducer, useCallback } from 'react';
+import React, {
+  useContext,
+  createContext,
+  useReducer,
+  useCallback,
+} from 'react';
 import { Map } from 'immutable';
 
 import createEditor from '../rete';
@@ -30,8 +35,7 @@ function reducer(
   state: StateContext,
   [type, payload]: [string, any]
 ): StateContext {
-  // console.log(type, payload);
-
+  console.log(type, payload);
   switch (type) {
     case 'SET_EDITOR': {
       return { ...state, editor: payload };

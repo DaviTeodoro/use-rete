@@ -1,5 +1,5 @@
 import { ReteComponent, Input, Output } from '../rete/ReteComponent';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useRete } from '../provider/';
 

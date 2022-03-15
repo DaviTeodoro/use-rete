@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRete } from '../provider/';
 
 export default function NodeEditor() {
