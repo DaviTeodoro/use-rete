@@ -74,7 +74,7 @@ export class ReteComponent extends Rete.Component {
 class Control extends Rete.Control {
   emitter: any;
   component: any;
-  props: { value: string; setValue: (v: any) => void };
+  props: { value: any; setValue: (v: any) => void };
   update: any;
 
   constructor(
@@ -93,7 +93,7 @@ class Control extends Rete.Control {
     node.data['controlData'] = initial;
 
     this.props = {
-      value: 'lol?',
+      value: {},
       setValue: (v) => {
         this.setValue(v);
         this.emitter.trigger('process');
