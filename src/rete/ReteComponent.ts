@@ -67,7 +67,7 @@ export class ReteComponent extends Rete.Component {
   }
 
   worker(node: Rete.Component['data'], inputs: any, outputs: any) {
-    this.onWork(node, inputs, outputs);
+    this.onWork(node, inputs, outputs, this.editor);
   }
 }
 
